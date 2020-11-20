@@ -8,6 +8,14 @@ const config = {
 	},
 	dom: {
         createContainer: true
+	},
+	physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: {y: 500},
+			useTicker: true,
+            debug: true
+        }      
     },
 	pixelArt: true,
 	type: Phaser.AUTO,

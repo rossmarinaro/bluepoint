@@ -39,22 +39,13 @@ var hud_1 = new Phaser.Class({
         this.eventTyping = undefined;
         this.messageToShow = "";
 
-        this.music = this.sound.add('song', {
-                delay: 0
-            });
-
-
+        this.music = this.sound.add('song', {delay: 0}).setLoop(true);
 
         this.textDialogue = this.add.text(190, 70, "", { //text showing the message of the NPC or Guy Blue
             fontFamily: 'ZCOOL QingKe HuangYou',
-            wordWrap: {
-                width: 430,
-                useAdvancedWrap: true
-            },
+            wordWrap: { width: 430, useAdvancedWrap: true},
             align: 'left'
         }).setFontSize(25).setDepth(2);
-
-
 
         //------------------ Final text
         graphics = this.add.graphics();
@@ -63,8 +54,6 @@ var hud_1 = new Phaser.Class({
 
         this.buttonSubmitRect = this.add.rectangle(340, 485, 200, 30).setVisible(false).setFillStyle(0x1f317d, 0.6).setStrokeStyle(1, 0x616161, 1.0).setInteractive();
         this.buttonSkipRect = this.add.rectangle(560, 485, 200, 30).setVisible(false).setFillStyle(0x1f317d, 0.6).setStrokeStyle(1, 0x616161, 1.0).setInteractive();
-
-
 
 
         this.finalTypingMessage = (text) => {
@@ -82,9 +71,7 @@ var hud_1 = new Phaser.Class({
 
             this.eventCloseDialog = this.time.addEvent({ // create the event that closes the dialog box after 2 seconds of finished
                 delay: text.length * 50 + 2000,
-                callback: () => {
-                    this.hideDialogue();
-                },
+                callback: () => this.hideDialogue(),
                 args: [text]
             });
         }
@@ -122,9 +109,7 @@ var hud_1 = new Phaser.Class({
         this.dialogueWindow.scaleX = 3.5;
         this.dialogueWindow.scaleY = 1.7;
 
-        this.textTitle = this.add.text(400, 40, 'Hello World', {
-            fontFamily: 'ZCOOL QingKe HuangYou'
-        }).setFontSize(35);
+        this.textTitle = this.add.text(400, 40, 'Hello World', {fontFamily: 'ZCOOL QingKe HuangYou'}).setFontSize(35);
         this.textTitle.setOrigin(0.5, 0.5);
 
         this.textInstruction = this.add.text(480, 160, "Press space bar or interact to continue", {fontFamily: 'ZCOOL QingKe HuangYou'}).setFontSize(20);
@@ -153,7 +138,7 @@ var hud_1 = new Phaser.Class({
 
         this.instructionText.visible = false;
 
-        this.flashingTextTween = this.tweens.add({targets: this.instructionText, alpha: {from: 0, to: 1}, duration: 500, ease: 'Sine.easeInOut', loop: -1}).stop();
+       // this.flashingTextTween = this.tweens.add({targets: this.instructionText, alpha: {from: 0, to: 1}, duration: 500, ease: 'Sine.easeInOut', loop: -1}).stop();
         createSocialMediaMenu(this, "Shea%20Stadium%20still%20exists%20in%20%23Bluepoint-"); // create the social media menu for facebook, twiter and copy link
         createMenu(this, ["Restart ", "Menu "/*, "Loser Board "*/], [
             () => {
@@ -228,84 +213,63 @@ var hud_1 = new Phaser.Class({
 
         //------------------form
         
-        graphics.fillStyle(0x334fcb, 0.9);
+        // graphics.fillStyle(0x334fcb, 0.9);
 
-        this.buttonSubmit = this.add.text(this.buttonSubmitRect.x, this.buttonSubmitRect.y, "Submit", {
-            fontFamily: 'euroStyle',
-            fontSize: 25
-        }).setVisible(false).setOrigin(0.5).setShadow(3, 3, 'rgba(0,0,0,0.5)', 5);
+        // this.buttonSubmit = this.add.text(this.buttonSubmitRect.x, this.buttonSubmitRect.y, "Submit", {
+        //     fontFamily: 'euroStyle',
+        //     fontSize: 25
+        // }).setVisible(false).setOrigin(0.5).setShadow(3, 3, 'rgba(0,0,0,0.5)', 5);
 
-        this.buttonSkip = this.add.text(this.buttonSkipRect.x, this.buttonSkipRect.y, "Skip", {
-            fontFamily: 'euroStyle',
-            fontSize: 25
-        }).setVisible(false).setOrigin(0.5).setShadow(3, 3, 'rgba(0,0,0,0.5)', 5);
+        // this.buttonSkip = this.add.text(this.buttonSkipRect.x, this.buttonSkipRect.y, "Skip", {
+        //     fontFamily: 'euroStyle',
+        //     fontSize: 25
+        // }).setVisible(false).setOrigin(0.5).setShadow(3, 3, 'rgba(0,0,0,0.5)', 5);
 
-        //--------------Hover effect for the buttons
-        this.buttonSubmitRect.on('pointerover', () => this.buttonSubmitRect.setFillStyle(0x334fcb));
-        this.buttonSubmitRect.on('pointerout', () => this.buttonSubmitRect.setFillStyle(0x1f317d));
-        this.buttonSkipRect.on('pointerover', () => this.buttonSkipRect.setFillStyle(0x334fcb));
-        this.buttonSkipRect.on('pointerout', () => this.buttonSkipRect.setFillStyle(0x1f317d));
-        this.validationForm = this.add.text(430, 510, '', {fontFamily: 'euroStyle', fontSize: 15, color: '#f20a0a'}).setOrigin(0.5, 0.5)
+        // //--------------Hover effect for the buttons
+        // this.buttonSubmitRect.on('pointerover', () => this.buttonSubmitRect.setFillStyle(0x334fcb));
+        // this.buttonSubmitRect.on('pointerout', () => this.buttonSubmitRect.setFillStyle(0x1f317d));
+        // this.buttonSkipRect.on('pointerover', () => this.buttonSkipRect.setFillStyle(0x334fcb));
+        // this.buttonSkipRect.on('pointerout', () => this.buttonSkipRect.setFillStyle(0x1f317d));
+        // this.validationForm = this.add.text(430, 510, '', {fontFamily: 'euroStyle', fontSize: 15, color: '#f20a0a'}).setOrigin(0.5, 0.5)
 
         // IMPORTANT! : every font after this gets broken, so it should be at the end
-        this.form = this.add.dom(450, 430).createFromCache('form').setVisible(false);
+        //this.form = this.add.dom(450, 430).createFromCache('form').setVisible(false);
 
-        this.buttonSubmitRect.on('pointerdown', () => {
+        // this.buttonSubmitRect.on('pointerdown', () => {
 
-            // validate email and name:
-            if (this.form.getChildByID('formName').value.length < 2) {
-                this.validationForm.text = "enter a valid name"
-                return;
-            }
-            if (!ValidateEmail(this.form.getChildByID('formEmail').value)) {
-                this.validationForm.text = "enter a valid email"
-                return;
-            }
+        //     // validate email and name:
+        //     // if (this.form.getChildByID('formName').value.length < 2) {
+        //     //     this.validationForm.text = "enter a valid name"
+        //     //     return;
+        //     // }
+        //     // if (!ValidateEmail(this.form.getChildByID('formEmail').value)) {
+        //     //     this.validationForm.text = "enter a valid email"
+        //     //     return;
+        //     // }
 
-            this.validationForm.text = ""
-            player.avatar.setVisible(false);
-            var inputName = this.form.getChildByID('formName').value;
-            var inputEmail = this.form.getChildByID('formEmail').value;
+        //     this.validationForm.text = ""
+        //     player.avatar.setVisible(false);
+        //     var inputName = this.form.getChildByID('formName').value;
+        //     var inputEmail = this.form.getChildByID('formEmail').value;
 
-            this.form.visible = false;
-            this.rectangleDialog.visible = false;
+        //     this.form.visible = false;
+        //     this.rectangleDialog.visible = false;
 
-            this.buttonSkip.visible = false;
-            this.buttonSkipRect.visible = false;
-            this.buttonSubmit.visible = false;
-            this.buttonSubmitRect.visible = false;
+        //     this.buttonSkip.visible = false;
+        //     this.buttonSkipRect.visible = false;
+        //     this.buttonSubmit.visible = false;
+        //     this.buttonSubmitRect.visible = false;
 
-            writeData(inputName, this.score, inputEmail,"scores")
-            this.scene.launch("loserBoard", {
-                type: 1,
-                score: this.score,
-                name: inputName,
-                colectionName:"scores",
-                topMessage:[" Woke Up " , " People: Shea Stadium still closed. "],
-                level:1
-            })
-        })
-
-        this.buttonSkipRect.on('pointerdown', () => {
-
-            player.avatar.setVisible(false);
-            this.form.visible = false;
-            this.rectangleDialog.visible = false;
-
-            this.buttonSkip.visible = false;
-            this.buttonSkipRect.visible = false;
-            this.buttonSubmit.visible = false;
-            this.buttonSubmitRect.visible = false;
-
-            this.scene.launch("loserBoard", {
-                type: 2,
-                score: this.score,
-                name: undefined,
-                colectionName: "scores",
-                level:1
-            })
-        })
-
+        //     writeData(inputName, this.score, inputEmail,"scores")
+        //     this.scene.launch("loserBoard", {
+        //         type: 1,
+        //         score: this.score,
+        //         name: inputName,
+        //         colectionName:"scores",
+        //         topMessage:[" Woke Up " , " People: Shea Stadium still closed. "],
+        //         level:1
+        //     })
+        // })
 
 
 
@@ -328,12 +292,8 @@ var hud_1 = new Phaser.Class({
             this.instructionText.text = "use the virtual joystick to move \n Press the button to interact"
             this.textInstruction.text = "Press interact to continue"
         } else { //-------------------DESKTOP
-            this.buttonInteract.on('pointerover', () => {
-                this.buttonInteract.setScale(1, 1.1);
-            });
-            this.buttonInteract.on('pointerout', () => {
-                this.buttonInteract.setScale(1, 1);
-            });
+            this.buttonInteract.on('pointerover', () => this.buttonInteract.setScale(1, 1.1));
+            this.buttonInteract.on('pointerout', () => this.buttonInteract.setScale(1, 1));
         }
 
 
@@ -349,69 +309,28 @@ var hud_1 = new Phaser.Class({
             this.textInstruction.visible = false;
 
         });
-
         this.timedEvent = this.time.delayedCall(6000 + initialTime, () => {
             this.instructionText.visible = true;
             controls.joystickLocked = false;
             controls.buttonsLocked = false;
-        })
-
-
-        this.timedEvent = this.time.delayedCall(15000 + initialTime, () => {
-            this.instructionText.visible = false;
-        })
-
-        this.timedEvent = this.time.delayedCall(68000 + initialTime, () => {
-
-            if (this.showingDialogue) this.endAllDialogs();
-            sleepEveryone();
-            //console.log("people sleeping in: " + music.seek);
-            //doors now show the secondary message
-            NPCS[16].message = 1;
-            NPCS[17].message = 1;
-            NPCS[18].message = 1;
-
-
         });
-
-        this.timedEvent = this.time.delayedCall(70000 + initialTime, () => {
-            controls.buttonsLocked = true;
-            controls.joystickLocked = true;
-            player.avatar.play("idleDown" + player.shirt);
-            this.showDialogue("What the hell is happening? We have to wake these people up!");
-            this.textInstruction.visible = false;
-        });
-
-        this.timedEvent = this.time.delayedCall(74000 + initialTime, () => {
-            controls.buttonsLocked = false;
-            controls.joystickLocked = false;
-            this.showScore();
-            this.instructionText.visible = true;
-            this.flashingTextTween.play();
-            this.instructionText.text = 'Interact with people to wake them up'
-        })
-
+        this.timedEvent = this.time.delayedCall(15000 + initialTime, () => this.instructionText.visible = false);
         this.timedEvent = this.time.delayedCall(140000 + initialTime, () => {
             this.flashingTextTween.stop();
             this.instructionText.visible = false;
 
-        })
-
+        });
         this.timedEvent = this.time.delayedCall(144000 + initialTime, () => {
             if (this.joyStick !== undefined) {
                 this.joyStick.thumb.setVisible(false);
                 this.joyStick.base.setVisible(false);
             }
-
-        })
-
+        });
         this.timedEvent = this.time.delayedCall(170000 + initialTime, () => {
-
             player.direction = down;
             this.scoreText.visible = false;
             this.scoreTitleText.visible = false;
             this.iconZZZ.visible = false;
-
             this.rectangleDialog.visible = true;
             this.textDialogue.visible = true;
             this.textDialogue.y = 430;
@@ -431,18 +350,14 @@ var hud_1 = new Phaser.Class({
             outroMusic.setLoop(true);
             this.tweens.add({
                 targets: outroMusic,
-                volume: {
-                    from: 0,
-                    to: 0.8
-                },
+                volume: {from: 0, to: 0.8},
                 duration: 10000,
                 ease: 'Sine.easeInOut',
                 loop: 0,
             });
         })
 
-
-        //when the game loses its focus it should stop the clock
+ //when the game loses its focus it should stop the clock
         this.game.events.on('blur', () => {
             this.scene.pause();
             this.time.paused = true
@@ -452,70 +367,49 @@ var hud_1 = new Phaser.Class({
             this.scene.resume();
         });
 
-       
         this.music.play();
-
-        outroMusic = this.sound.add('outro', {
-            delay: 0
-        }).setVolume(0);
+        outroMusic = this.sound.add('outro', {delay: 0}).setVolume(0).setLoop(true);
 
     },
 
     update: function (t, delta) {
-
-
         this.playTime += delta;
-
         let nearest = minDistance();
         if (nearest[0] < radiusInteraction && nearest[1].sleeping !== 2) {
             this.buttonInteract.visible = true;
             this.buttonStartText.visible = true;
             if (nearest[1].sleeping === 1) {
-                if (nearest[1].name !== "Guy Blue") {
-                    this.buttonStartText.text = "wake up " + nearest[1]["name"] + "!";
-                }
+                if (nearest[1].name !== "Guy Blue") this.buttonStartText.text = "wake up " + nearest[1]["name"] + "!";
             } else {
                 if (nearest[1].name !== "Guy Blue") {
                     if (nearest[1].sequence !== undefined) this.buttonStartText.text = "talk to " + nearest[1].sequence.sequentialName;
 
                     else this.buttonStartText.text = "talk to " + nearest[1]["name"];
-                } else {
-                    this.buttonStartText.text = "Open door";
-                }
+                } else this.buttonStartText.text = "Open door";
             }
         } else {
-
             this.buttonInteract.visible = false;
             this.buttonStartText.visible = false;
         }
 
-        NPCS.forEach((el, index, object) => {
-            if (el.timeToDisappear < this.playTime + 5000 && el.sleeping && !el["tween"].isPlaying()) {
-                el["tween"].play();
-            }
+        // NPCS.forEach((el, index, object) => {
+        //     if (el.timeToDisappear < this.playTime + 5000 && el.sleeping && !el["tween"].isPlaying()) {
+        //         el["tween"].play();
+        //     }
 
-            if (el.timeToDisappear < this.playTime && el.sleeping === 1) {
-                el.visible = false;
-                el.avatar.visible = false;
-                el["zzz"].visible = false;
-                el["tween"].stop();
-                object.splice(index, 1);
-            }
-
-            if (el.timeToSleep < this.playTime && el.sleeping !== 1) {
-                sleepNPC(el);
-                el.timeToDisappear = getTimeToDisappear(this.playTime) + this.playTime;
-            }
-        })
+        //     if (el.timeToDisappear < this.playTime && el.sleeping === 1) {
+        //         el.visible = false;
+        //         el.avatar.visible = false;
+        //         el["zzz"].visible = false;
+        //         el["tween"].stop();
+        //         object.splice(index, 1);
+        //     }
+        // });
         if (this.joyStick != null) this.dumpJoyStickState();
-
     },
-
     dumpJoyStickState: function () {
-        if (!controls.joystickLocked)
-            player.moveJoystic(this.joyStick.forceX, this.joyStick.forceY)
+        if (!controls.joystickLocked) player.moveJoystic(this.joyStick.forceX, this.joyStick.forceY);
     },
-
     hideDialogue() { // hide the current dialogue or goes to the next one in a sequential dialog
 
         if (this.sequentialText) {
@@ -624,18 +518,7 @@ var hud_1 = new Phaser.Class({
                         }
                     }
                 }
-            } else if (nearest[1].sleeping === 1) { // the NPC is asleep, awake him/her!
-                awakeNPC(nearest[1]);
-                nearest[1].timeToSleep = this.playTime + getTimeToSleep(this.playTime);
-                nearest[1].timeToDisappear = 999999;
-                nearest[1].sleeping = 2;
-                this.score++;
-                this.scoreText.text = "x " + this.score;
-                if (nearest[1]["tween"].isPlaying()) {
-                    nearest[1]["tween"].stop();
-                    nearest[1].avatar.alpha = 1;
-                }
-            }
+            } 
         }
     }
 

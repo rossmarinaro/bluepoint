@@ -117,7 +117,7 @@ load_files_level_1 = function (scene) {
     scene.load.image("black", "./assets/images/level_1/black.png");
     scene.load.image("background_1", "./assets/images/level_1/base1.png");
     scene.load.image("background_2", "./assets/images/level_1/base2.png");
-    scene.load.image("bloom", "./assets/images/level_1/lights_bloom.png");
+    //scene.load.image("bloom", "./assets/images/level_1/lights_bloom.png");
     scene.load.image("whiteSquare", "./assets/images/level_1/white_square.png");
     scene.load.spritesheet("discoBall", "./assets/images/level_1/disco ball.png", {frameWidth: 36, frameHeight: 36}); 
 //ball
@@ -129,7 +129,7 @@ load_files_level_1 = function (scene) {
     scene.load.spritesheet("collapsingBlue", "./assets/images/level_1/collapsing_blue.png", {frameWidth: 36, frameHeight: 36});
     scene.load.spritesheet("NPC", "./assets/images/level_1/NPC sprites.png", { frameWidth: 36, frameHeight: 36});
 // NPC
-    scene.load.spritesheet("ZZZ", "./assets/images/level_1/white z.png", {frameWidth: 36, frameHeight: 36}); 
+   // scene.load.spritesheet("ZZZ", "./assets/images/level_1/white z.png", {frameWidth: 36, frameHeight: 36}); 
 // zzz when sleeping
     scene.load.image("drums", "./assets/images/level_1/drums.png"); //Objects
     scene.load.image("table", "./assets/images/level_1/table.png");

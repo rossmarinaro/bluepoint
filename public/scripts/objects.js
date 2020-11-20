@@ -40,13 +40,12 @@ class Player_Lvl_1 {
         this.moving = false;
         this.direction = null;
         this.avatar = null;
-        this.poly = poly
-
-
+        this.poly = poly;
+    //move player
         this.move = (params) => {
             if (params === left) {
                 if (Phaser.Geom.Polygon.Contains(this.poly, this.avatar.x - speed, this.avatar.y + 16) &&
-                    !checkColisionNPCS(this.avatar.x - speed, this.avatar.y + 16))
+                    !checkCollisionNPCS(this.avatar.x - speed, this.avatar.y + 16))
                     this.avatar.x -= speed;
                 if (!this.moving) {
                     this.direction = left;
@@ -54,10 +53,9 @@ class Player_Lvl_1 {
                 }
                 this.moving = true;
             }
-
             if (params === right) {
                 if (Phaser.Geom.Polygon.Contains(poly, this.avatar.x + speed, this.avatar.y + 16) &&
-                    !checkColisionNPCS(this.avatar.x + speed, this.avatar.y + 16))
+                    !checkCollisionNPCS(this.avatar.x + speed, this.avatar.y + 16))
                     this.avatar.x += speed;
                 if (!this.moving) {
                     this.avatar.play("walkRight" + this.shirt);
@@ -67,7 +65,7 @@ class Player_Lvl_1 {
             }
             if (params === up) {
                 if (Phaser.Geom.Polygon.Contains(poly, this.avatar.x, this.avatar.y - speed + 16) &&
-                    !checkColisionNPCS(this.avatar.x, this.avatar.y + 16 - speed))
+                    !checkCollisionNPCS(this.avatar.x, this.avatar.y + 16 - speed))
                     this.avatar.y -= speed;
                 if (this.direction != up) this.avatar.play("walkUp" + this.shirt);
                 this.direction = up;
@@ -76,7 +74,7 @@ class Player_Lvl_1 {
             }
             if (params === down) {
                 if (Phaser.Geom.Polygon.Contains(poly, this.avatar.x, this.avatar.y + speed + 16) &&
-                    !checkColisionNPCS(this.avatar.x, this.avatar.y + 16 + speed))
+                    !checkCollisionNPCS(this.avatar.x, this.avatar.y + 16 + speed))
                     this.avatar.y += speed;
                 if (this.direction != down) this.avatar.play("walkDown" + this.shirt);
                 this.direction = down;
@@ -85,23 +83,23 @@ class Player_Lvl_1 {
             }
         };
 
-        this.moveJoystic = (x, y) => {
+        this.moveJoyStick = (x, y) => {
             // movement
             if (x > 30 && Phaser.Geom.Polygon.Contains(poly, this.avatar.x + speed, this.avatar.y + 16) &&
-                !checkColisionNPCS(this.avatar.x + speed, this.avatar.y + 16)) {
+                !checkCollisionNPCS(this.avatar.x + speed, this.avatar.y + 16)) {
                 this.avatar.x += speed * 1.2;
             }
             if (x < -30 && Phaser.Geom.Polygon.Contains(poly, this.avatar.x - speed, this.avatar.y + 16) &&
-                !checkColisionNPCS(this.avatar.x - speed, this.avatar.y + 16)) {
+                !checkCollisionNPCS(this.avatar.x - speed, this.avatar.y + 16)) {
                 this.avatar.x -= speed * 1.2;
             }
             if (y < -30 && Phaser.Geom.Polygon.Contains(poly, this.avatar.x, this.avatar.y + 16 - speed) &&
-                !checkColisionNPCS(this.avatar.x, this.avatar.y + 16 - speed)) {
+                !checkCollisionNPCS(this.avatar.x, this.avatar.y + 16 - speed)) {
                 this.avatar.y -= speed;
                 this.avatar.depth = this.avatar.y;
             }
             if (y > 30 && Phaser.Geom.Polygon.Contains(poly, this.avatar.x, this.avatar.y + 16 + speed) &&
-                !checkColisionNPCS(this.avatar.x, this.avatar.y + 16 + speed)) {
+                !checkCollisionNPCS(this.avatar.x, this.avatar.y + 16 + speed)) {
                 this.avatar.y += speed;
                 this.avatar.depth = this.avatar.y;
             }
@@ -131,21 +129,13 @@ class Player_Lvl_1 {
             }
         };
 
-
+    //return to idle
         this.returnToIdle = () => {
             switch (this.direction) {
-                case up:
-                    this.avatar.play("idleUp" + this.shirt);
-                    break;
-                case down:
-                    this.avatar.play("idleDown" + this.shirt);
-                    break;
-                case right:
-                    this.avatar.play("idleRight" + this.shirt);
-                    break;
-                case left:
-                    this.avatar.play("idleLeft" + this.shirt);
-                    break;
+                case up: this.avatar.play("idleUp" + this.shirt); break;
+                case down: this.avatar.play("idleDown" + this.shirt); break;
+                case right: this.avatar.play("idleRight" + this.shirt); break;
+                case left: this.avatar.play("idleLeft" + this.shirt); break;
             }
         };
     };
@@ -230,7 +220,7 @@ function createNPCS_Level_1() {
 
 
 
-// --------------------------------- M E T H O D S ----------------------------------
+// --------------------------------- global functions ----------------------------------
 
 // function resetGame() {
 //     controls.joystickLocked = true;
@@ -278,39 +268,17 @@ function NpcLookPlayer(npc) {
     }
 }
 
-function sleepEveryone() {
-    NPCS.forEach((el) => {
-        if (el.avatar.anims !== undefined) {
-            el.avatar.anims.play("sleep" + el.name);
-            el.sleeping = 1;
-            el["zzz"].visible = true;
-        }
-    })
-}
+// function sleepEveryone() {
+//     NPCS.forEach((el) => {
+//         if (el.avatar.anims !== undefined) {
+//             el.avatar.anims.play("sleep" + el.name);
+//             el.sleeping = 1;
+//             el["zzz"].visible = true;
+//         }
+//     })
+// }
 
-function sleepNPC(npc) {
-    npc.sleeping = 1;
-    npc.avatar.anims.play("sleep" + npc.name);
-    npc["zzz"].visible = true;
-}
-
-function awakeNPC(npc) {
-    npc.avatar.anims.stop();
-    npc.avatar.setTexture("NPC", npc.idleSprite);
-    npc.sleeping = 2;
-    npc["zzz"].visible = false;
-
-}
-
-function getTimeToSleep(currentTime) {
-    return (Math.sqrt(142000 - currentTime) * 31.62) / 2 - 0.5; //multiply by 31.62 to convert from miliseconds to seconds in the square root
-}
-
-function getTimeToDisappear(currentTime) {
-    return Math.sqrt(142000 - currentTime) * 31.62;
-}
-
-function checkColisionNPCS(X, Y) {
+function checkCollisionNPCS(X, Y) {
     return NPCS.some((el) => {
         X1 = el.avatar.x;
         Y1 = el.avatar.y + 16;
@@ -485,7 +453,7 @@ class Player_Lvl_2 {
 
             if (params === left) {
                 if (Phaser.Geom.Polygon.Contains(this.poly, this.avatar.x - speed, this.avatar.y + 16) &&
-                    !this.checkColisions(this.avatar.x - speed, this.avatar.y + 16))
+                    !this.checkCollisions(this.avatar.x - speed, this.avatar.y + 16))
                     this.avatar.x -= speed;
                 if (!this.moving) {
                     this.direction = left;
@@ -496,7 +464,7 @@ class Player_Lvl_2 {
 
             if (params === right) {
                 if (Phaser.Geom.Polygon.Contains(this.poly, this.avatar.x + speed, this.avatar.y + 16) &&
-                    !this.checkColisions(this.avatar.x + speed, this.avatar.y + 16)) {
+                    !this.checkCollisions(this.avatar.x + speed, this.avatar.y + 16)) {
                     this.avatar.x += speed;
                 }
                 if (!this.moving) {
@@ -508,7 +476,7 @@ class Player_Lvl_2 {
             //return;
             if (params === up) {
                 if (Phaser.Geom.Polygon.Contains(this.poly, this.avatar.x, this.avatar.y - speed + 16) &&
-                    !this.checkColisions(this.avatar.x, this.avatar.y + 16 - speed))
+                    !this.checkCollisions(this.avatar.x, this.avatar.y + 16 - speed))
                     this.avatar.y -= speed;
                 if (this.direction != up) this.avatar.play("walkUp" + this.shirt);
                 this.direction = up;
@@ -517,7 +485,7 @@ class Player_Lvl_2 {
             }
             if (params === down) {
                 if (Phaser.Geom.Polygon.Contains(this.poly, this.avatar.x, this.avatar.y + speed + 16) &&
-                    !this.checkColisions(this.avatar.x, this.avatar.y + 16 + speed))
+                    !this.checkCollisions(this.avatar.x, this.avatar.y + 16 + speed))
                     this.avatar.y += speed;
                 if (this.direction != down) this.avatar.play("walkDown" + this.shirt);
                 this.direction = down;
@@ -526,23 +494,23 @@ class Player_Lvl_2 {
             }
         }
 
-        this.moveJoystic = (x, y) => {
+        this.moveJoyStick = (x, y) => {
             // movement
             if (x > 30 && Phaser.Geom.Polygon.Contains(this.poly, this.avatar.x + speed, this.avatar.y + 16) &&
-                !this.checkColisions(this.avatar.x + speed, this.avatar.y + 16)) {
+                !this.checkCollisions(this.avatar.x + speed, this.avatar.y + 16)) {
                 this.avatar.x += speed * 1.2;
             }
             if (x < -30 && Phaser.Geom.Polygon.Contains(this.poly, this.avatar.x - speed, this.avatar.y + 16) &&
-                !this.checkColisions(this.avatar.x - speed, this.avatar.y + 16)) {
+                !this.checkCollisions(this.avatar.x - speed, this.avatar.y + 16)) {
                 this.avatar.x -= speed * 1.2;
             }
             if (y < -30 && Phaser.Geom.Polygon.Contains(this.poly, this.avatar.x, this.avatar.y + 16 - speed) &&
-                !this.checkColisions(this.avatar.x, this.avatar.y + 16 - speed)) {
+                !this.checkCollisions(this.avatar.x, this.avatar.y + 16 - speed)) {
                 this.avatar.y -= speed;
                 this.avatar.depth = this.avatar.y;
             }
             if (y > 30 && Phaser.Geom.Polygon.Contains(this.poly, this.avatar.x, this.avatar.y + 16 + speed) &&
-                !this.checkColisions(this.avatar.x, this.avatar.y + 16 + speed)) {
+                !this.checkCollisions(this.avatar.x, this.avatar.y + 16 + speed)) {
                 this.avatar.y += speed;
                 this.avatar.depth = this.avatar.y;
             }
@@ -589,7 +557,7 @@ class Player_Lvl_2 {
             }
         }
 
-        this.checkColisions = (X, Y) => { //check collisions with circular colliders
+        this.checkCollisions = (X, Y) => { //check collisions with circular colliders
             return this.colliders.some((el) => {
 
                 let X1 = el[0];
@@ -789,7 +757,7 @@ createMenu = (scene, names, callbacks, width, height, posX, posY) => {
                 scene.time.delayedCall(200, () => buttons.forEach(el=> el.visible = false));
                 buttons.forEach(el=> el.tweenOut.play());
             }
-        })
+        });
 
 
 
