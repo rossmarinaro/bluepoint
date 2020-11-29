@@ -60,7 +60,7 @@ var level_1 = new Phaser.Class({
     },
 
     create: function () {
-
+        
         background = this.add.image(0, 0, "background_1").setOrigin(0, 0);
         //this.bloom = this.add.image(0, 0, "bloom").setOrigin(0, 0);
         //this.bloom.visible = false;
@@ -88,18 +88,8 @@ var level_1 = new Phaser.Class({
         player.avatar = this.add.sprite(player.x, player.y, "blueGuy", 0);
         player.avatar.depth=player.avatar.y;
 
-        // this.black = this.add.image(0, 0, "black").setOrigin(0, 0).setVisible(false);
-        // this.black.alpha = 0;
         this.dust = this.add.image(player.avatar.x, player.avatar.y, "dust").setOrigin(0.5, 0.5).setVisible(false).setAlpha(0);
 
-        
-// other animations for guy blue
-    // //---- collapsing
-    //     this.anims.create({key: "collapseBlue",repeat: 0, frameRate: 2, frames: this.anims.generateFrameNumbers('collapsingBlue', {frames: [0, 1, 2, 3]})});
-    //     this.anims.create({key: "collapseRed",repeat: 0, frameRate: 2, frames: this.anims.generateFrameNumbers('collapsingRed', {frames: [0, 1, 2, 3]})});
-    // //---- stand up from collapse position
-    //     this.anims.create({key: "standUpBlue", repeat: 0, frameRate: 2, frames: this.anims.generateFrameNumbers('collapsingBlue', {frames: [3, 2, 1, 0]})});
-    //     this.anims.create({key: "standUpRed", repeat: 0, frameRate: 2, frames: this.anims.generateFrameNumbers('collapsingRed', {frames: [3, 2, 1, 0]})});
         //--------------------------------------------------     NPC's
         createNPCS_Level_1();
         this.anims.create({key: "idleJon", repeat: -1, frameRate: 5, frames: this.anims.generateFrameNumbers('NPC', {frames: [5, 6]})});
@@ -276,61 +266,6 @@ var level_1 = new Phaser.Class({
 
         controls.buttonsLocked = true;
 
-        // --------------------------- T I M E      E V E N T S
-
-        // timedEvent = this.time.delayedCall(16000 + initialTime, () =>  background.setTexture("background_2"));
-        // timedEvent = this.time.delayedCall(16100 + initialTime, () =>  background.setTexture("background_1"));
-        // timedEvent = this.time.delayedCall(45000 + initialTime, () =>  background.setTexture("background_2"));
-        // timedEvent = this.time.delayedCall(45100 + initialTime, () =>  background.setTexture("background_1"));
-        // timedEvent = this.time.delayedCall(60000 + initialTime, () =>  background.setTexture("background_2"));
-        // timedEvent = this.time.delayedCall(60100 + initialTime, () =>  background.setTexture("background_1"));
-        // timedEvent = this.time.delayedCall(65000 + initialTime, () =>  background.setTexture("background_2"));
-        // timedEvent = this.time.delayedCall(65100 + initialTime, () =>  background.setTexture("background_1"));
-        // timedEvent = this.time.delayedCall(70000 + initialTime, () =>  background.setTexture("background_2"));
-        // timedEvent = this.time.delayedCall(70100 + initialTime, () =>  background.setTexture("background_1"));
-        // timedEvent = this.time.delayedCall(74000 + initialTime, () =>  background.setTexture("background_2"));
-        // timedEvent = this.time.delayedCall(74100 + initialTime, () =>  background.setTexture("background_1"));
-        // timedEvent = this.time.delayedCall(76000 + initialTime, () =>  background.setTexture("background_2"));
-        // timedEvent = this.time.delayedCall(76100 + initialTime, () =>  background.setTexture("background_1"));
-        // timedEvent = this.time.delayedCall(77000 + initialTime, () =>  background.setTexture("background_2"));
-        // timedEvent = this.time.delayedCall(77100 + initialTime, () =>  background.setTexture("background_1"));
-      //  timedEvent = this.time.delayedCall(68000 + initialTime, () =>  this.bloom.visible = true);
-        // timedEvent = this.time.delayedCall(140500 + initialTime, () => {
-        //     background.setTexture("background_2");
-        //     this.table.visible = false;
-        //     this.drums.visible = false;
-        //     this.speakers.visible = false;
-        //     this.discoball.visible = false;
-        //     controls.buttonsLocked = true;
-        //     controls.joystickLocked = true;
-        //     player.avatar.play("idleDown" + player.shirt);
-        //   //  this.bloom.visible = false;
-        //     hideAllCharacters();
-        //     //console.log("end gamepart in: " + music.seek);
-        // });
-        // timedEvent = this.time.delayedCall(150000 + initialTime, () => {
-        //     this.tweens.add({targets: this.cameras.main, zoom: {from: 4, to: 2}, duration: 4000, ease: 'Linear', loop: 0});
-        // });
-        // timedEvent = this.time.delayedCall(154000 + initialTime, () => {
-        //     this.black.visible = true;              // fade to black
-        //     this.black.depth = player.avatar.depth - 2;
-        //     this.tweens.add({targets: this.black, alpha: {from: 0, to: 1}, duration: 4000, ease: 'Sine.easeInOut', loop: 0, yoyo: false});
-        // });
-    // camera zoom in again
-        // timedEvent = this.time.delayedCall(160000 + initialTime, () => {
-        //     this.tweens.add({targets: this.cameras.main, zoom: {from: 2, to: 4}, duration: 4000, ease: 'Linear', loop: 0});
-        // });
-        // timedEvent = this.time.delayedCall(168000 + initialTime, () => {
-        //     this.particles = []
-        //     this.particlesAlpha={};
-        //     this.particlesAlpha.alpha=0;     
-        //     createDust(100).forEach(el=>{      
-        //         var rect = this.bloom = this.add.image(el.x, el.y, "whiteSquare").setDepth(player.avatar.y - 1);
-        //         rect.speed=Math.random() *4 + 1;
-        //         this.particles.push(rect);
-        //     });
-        //     this.tweens.add({targets: this.particlesAlpha, alpha: {from: 0, to: 1}, duration: 5000, ease: 'Linear', loop: 0});
-        // });
         this.scene.launch("hud_1");
         this.cameras.main.fadeIn(2000,255,255,255);
     },
@@ -343,14 +278,6 @@ var level_1 = new Phaser.Class({
             if (this.rightKey.isDown || this.DKey.isDown) player.move(right);
             if (this.leftKey.isDown || this.AKey.isDown) player.move(left);
         }
-       // if (this.bloom.visible === true) this.bloom.alpha = (((Math.sin(time / 200) + 1) / 2));
-        // if(this.particles!==undefined){
-        //     this.particles.forEach(el=>{
-        //         el.y+=el.speed;
-        //         el.alpha=((530-el.y)/530)*this.particlesAlpha.alpha
-        //         if(el.y>530) el.y=-5;
-        //     })
-        // }
     }
 })
 

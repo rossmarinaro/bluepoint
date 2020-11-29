@@ -94,20 +94,11 @@ var loading = new Phaser.Class({
             const queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
             if (urlParams.get('lvl') == 1)  this.scene.start("intro_1");
-            else if (urlParams.get('lvl') == 2) this.scene.start("level_2");
+          //  else if (urlParams.get('lvl') == 2) this.scene.start("level_2");
             else if (urlParams.get('lvl') == 3) this.scene.start("level_1");
-            else if (urlParams.get('lvl') === null) this.scene.start("map");
+            else if (urlParams.get('lvl') === null) this.scene.start("intro_1");
             else if (urlParams.get('lvl') == "1a") this.scene.start("level_1");
-            else if (urlParams.get('lvl') === 'lb') {
-                this.scene.start("loserBoard", {
-                    type: 2,
-                    score: 5,
-                    name: undefined,
-                    colectionName: "scores_lvl_2",
-                    level: 2
-                })
-            }
-            if (urlParams.get('debug') === 'true') document.getElementById('prompt').innerHTML = "load correctly without timer";
+       //     if (urlParams.get('debug') === 'true') document.getElementById('prompt').innerHTML = "load correctly without timer";
        });
     }
 });
@@ -129,8 +120,6 @@ load_files_level_1 = function (scene) {
     scene.load.spritesheet("collapsingBlue", "./assets/images/level_1/collapsing_blue.png", {frameWidth: 36, frameHeight: 36});
     scene.load.spritesheet("NPC", "./assets/images/level_1/NPC sprites.png", { frameWidth: 36, frameHeight: 36});
 // NPC
-   // scene.load.spritesheet("ZZZ", "./assets/images/level_1/white z.png", {frameWidth: 36, frameHeight: 36}); 
-// zzz when sleeping
     scene.load.image("drums", "./assets/images/level_1/drums.png"); //Objects
     scene.load.image("table", "./assets/images/level_1/table.png");
     scene.load.image("speakers", "./assets/images/level_1/speakers.png");
@@ -269,14 +258,4 @@ load_files_level_2 = function (scene) {
     files_level_2_loaded = true;
 }
 
-// let files_intro_loaded = false;
-// load_files_intro = function (scene) {
-//     if (files_intro_loaded) return
-//     //--------- Intro
-//     scene.load.audio("intro_Synth", "./assets/audio/Bluepoint Intro Synth.mp3");
-//     scene.load.audio("intro_Rythm", "./assets/audio/Bluepoint Intro Rhythm.mp3");
-//     scene.load.audio("start_Sound", "./assets/audio/Start Sound.m4a");
-//     scene.load.audio("loading", "./assets/audio/Bluepoint Loading Sound.m4a");
-//     scene.load.image("mutedIcon", "./assets/images/level_1/unmute-icon-12.png");
-//     files_intro_loaded = true;
-// }
+

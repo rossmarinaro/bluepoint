@@ -315,11 +315,7 @@ var hud_1 = new Phaser.Class({
             controls.buttonsLocked = false;
         });
         this.timedEvent = this.time.delayedCall(15000 + initialTime, () => this.instructionText.visible = false);
-        this.timedEvent = this.time.delayedCall(140000 + initialTime, () => {
-            this.flashingTextTween.stop();
-            this.instructionText.visible = false;
-
-        });
+        this.timedEvent = this.time.delayedCall(140000 + initialTime, () => this.instructionText.visible = false);
         this.timedEvent = this.time.delayedCall(144000 + initialTime, () => {
             if (this.joyStick !== undefined) {
                 this.joyStick.thumb.setVisible(false);
