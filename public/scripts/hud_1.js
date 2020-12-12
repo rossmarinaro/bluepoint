@@ -404,7 +404,7 @@ var hud_1 = new Phaser.Class({
         if (this.joyStick != null) this.dumpJoyStickState();
     },
     dumpJoyStickState: function () {
-        if (!controls.joystickLocked) player.moveJoystic(this.joyStick.forceX, this.joyStick.forceY);
+        if (!controls.joystickLocked) player.moveJoyStick(this.joyStick.forceX, this.joyStick.forceY);
     },
     hideDialogue() { // hide the current dialogue or goes to the next one in a sequential dialog
 
