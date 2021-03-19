@@ -1,10 +1,15 @@
+
+let gameData = {
+	currentUsers : 0
+}
+
 const config = {
 	scale: {
-        mode: Phaser.Scale.FIT,
+        mode: Phaser.Scale.FIT, //RESIZE
 		parent : 'gameContainer',
 		autoCenter: Phaser.Scale.CENTER_BOTH,	
-		width:888,
-		height: 520
+		width: 888, //innerWidth
+		height: 520 //innerHeight
 	},
 	dom: {
         createContainer: true

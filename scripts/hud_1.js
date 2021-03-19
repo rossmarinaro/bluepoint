@@ -39,7 +39,7 @@ var hud_1 = new Phaser.Class({
         this.eventTyping = undefined;
         this.messageToShow = "";
 
-        this.music = this.sound.add('song', {delay: 0}).setLoop(true);
+        this.music = this.sound.add('no_vision_mp3', {delay: 0}).setLoop(true);
 
         this.textDialogue = this.add.text(190, 70, "", { //text showing the message of the NPC or Guy Blue
             fontFamily: 'ZCOOL QingKe HuangYou',
@@ -105,6 +105,22 @@ var hud_1 = new Phaser.Class({
                 });
             },
 
+
+//////////////////////////////////////////////ticket pop up
+    //small text box
+        this.smallGraphics1 = this.add.graphics({fillStyle: {color: 0xAFAFAF, alpha: 0.7}}).fillRoundedRect(90, 20, 200, 110, 15);
+        this.smallGraphics2 = this.add.graphics({lineStyle: {width: 3, color: 0x4F4F4F, alpha: 0.9}}).strokeRoundedRect(90, 20, 200, 110, 15);
+    //large textbox
+        this.largeGraphics1 = this.add.graphics({fillStyle: {color: 0xAFAFAF, alpha: 0.7}}).fillRoundedRect(300, 20, 550, 110, 15);
+        this.largeGraphics2 = this.add.graphics({lineStyle: {width: 3, color: 0x4F4F4F, alpha: 0.9}}).strokeRoundedRect(300, 20, 550, 110, 15);
+    //text
+        this.capacityTxt = this.add.text(100, 30, `Capacity: 80`, {font: '35px ZCOOL QingKe HuangYou', fill: '#000'});
+        this.currentTxt1 = this.add.text(100, 70, `Current:`, {font: '35px ZCOOL QingKe HuangYou', fill: '#000'});
+        this.currentTxt2 = this.add.text(240, 70, gameData.currentUsers, {font: '35px ZCOOL QingKe HuangYou', fill: '#000'});
+        this.ticketDescription = this.add.text(310, 50, `Click the icon to buy a ticket or add yourself \n to digital Shea. Let's sell out tue show!`, {font: '22px ZCOOL QingKe HuangYou', fill: '#000'});
+    //icon
+        this.ticketIcon = this.add.sprite(770, 80, 'ticket').setScale(0.3).setInteractive();
+
         this.dialogueWindow = this.add.image(400, 100, "messageBoard");
         this.dialogueWindow.scaleX = 3.5;
         this.dialogueWindow.scaleY = 1.7;
@@ -120,7 +136,7 @@ var hud_1 = new Phaser.Class({
         this.buttonInteract.scaleX = 1;
         this.buttonInteract.scaleY = 1;
         this.buttonInteract.setInteractive();
-        this.buttonStartText = this.add.text(790, 450, "talk to", {fontFamily: 'ZCOOL QingKe HuangYou'}).setFontSize(20);
+        this.buttonStartText = this.add.text(790, 450, "talk to", {fontFamily: 'ZCOOL QingKe HuangYou'}).setFontSize(17);
         this.buttonStartText.setOrigin(0.5, 0.5);
 
         this.showingDialogue = false;
@@ -322,36 +338,36 @@ var hud_1 = new Phaser.Class({
                 this.joyStick.base.setVisible(false);
             }
         });
-        this.timedEvent = this.time.delayedCall(170000 + initialTime, () => {
-            player.direction = down;
-            this.scoreText.visible = false;
-            this.scoreTitleText.visible = false;
-            this.iconZZZ.visible = false;
-            this.rectangleDialog.visible = true;
-            this.textDialogue.visible = true;
-            this.textDialogue.y = 430;
-            this.textDialogue.x = 240;
-            this.textDialogue.setShadow(3, 3, 'rgba(0,0,0,0.9)', 4);
-            this.typingEffect("Oh, you're still here?  We should stick together.");
-        })
-        this.timedEvent = this.time.delayedCall(175000 + initialTime, () => {
-            controls.joystickLocked = true;
-            this.textDialogue.visible = false;
-            this.form.visible = true;
-            this.buttonSkipRect.visible = true;
-            this.buttonSubmitRect.visible = true;
-            this.buttonSubmit.visible = true;
-            this.buttonSkip.visible = true;
-            outroMusic.play();
-            outroMusic.setLoop(true);
-            this.tweens.add({
-                targets: outroMusic,
-                volume: {from: 0, to: 0.8},
-                duration: 10000,
-                ease: 'Sine.easeInOut',
-                loop: 0,
-            });
-        })
+        // this.timedEvent = this.time.delayedCall(170000 + initialTime, () => {
+        //     player.direction = down;
+        //     this.scoreText.visible = false;
+        //     this.scoreTitleText.visible = false;
+        //     this.iconZZZ.visible = false;
+        //     this.rectangleDialog.visible = true;
+        //     this.textDialogue.visible = true;
+        //     this.textDialogue.y = 430;
+        //     this.textDialogue.x = 240;
+        //     this.textDialogue.setShadow(3, 3, 'rgba(0,0,0,0.9)', 4);
+        //     this.typingEffect("Oh, you're still here?  We should stick together.");
+        // })
+        // this.timedEvent = this.time.delayedCall(175000 + initialTime, () => {
+        //    controls.joystickLocked = true;
+        //     this.textDialogue.visible = false;
+        //     this.form.visible = true;
+        //     this.buttonSkipRect.visible = true;
+        //     this.buttonSubmitRect.visible = true;
+        //     this.buttonSubmit.visible = true;
+        //     this.buttonSkip.visible = true;
+        //     outroMusic.play();
+        //     outroMusic.setLoop(true);
+        //     this.tweens.add({
+        //         targets: outroMusic,
+        //         volume: {from: 0, to: 0.8},
+        //         duration: 10000,
+        //         ease: 'Sine.easeInOut',
+        //         loop: 0,
+        //     });
+        // })
 
  //when the game loses its focus it should stop the clock
         this.game.events.on('blur', () => {

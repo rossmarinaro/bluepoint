@@ -123,12 +123,14 @@ load_files_level_1 = function (scene) {
     scene.load.image("drums", "./assets/images/level_1/drums.png"); //Objects
     scene.load.image("table", "./assets/images/level_1/table.png");
     scene.load.image("speakers", "./assets/images/level_1/speakers.png");
-    scene.load.image("messageBoard", "./assets/images/level_1/dialogue window rectangle.png"); // dialogue window       
+    scene.load.image("messageBoard", "./assets/images/level_1/dialogue window rectangle.png"); // dialogue window  
+    scene.load.image("ticket", "./assets/images/concert-ticket-icon-11.jpg");
     scene.load.image("startButton", "./assets/images/level_1/start_button.png"); // start button       
     scene.load.image("interactButton", "./assets/images/level_1/interact_button.png"); // interact window       
     scene.load.spritesheet("ZZZIcon", "./assets/images/level_1/white z.png", {frameWidth: 36, frameHeight: 36});
     scene.load.audio("outro", "./assets/audio/Bluepoint Outro Music.mp3");
     scene.load.audio("song", "./assets/audio/Gutted.mp3");
+    scene.load.audio("no_vision_mp3", "./assets/audio/No Vision.mp3");
     files_level_1_loaded = true;
 }
 

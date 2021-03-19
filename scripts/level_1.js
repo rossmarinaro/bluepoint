@@ -92,6 +92,8 @@ var level_1 = new Phaser.Class({
 
         //--------------------------------------------------     NPC's
         createNPCS_Level_1();
+        //spawnPlayers('Guy Blue', 'ross', 'sup');
+
         this.anims.create({key: "idleJon", repeat: -1, frameRate: 5, frames: this.anims.generateFrameNumbers('NPC', {frames: [5, 6]})});
         this.anims.create({key: "idleSally", repeat: -1, frameRate: 2, frames: this.anims.generateFrameNumbers('NPC', {frames: [16, 17]})});
         this.anims.create({key: "idleDillon", repeat: -1,frameRate: 5, frames: this.anims.generateFrameNumbers('NPC', {frames: [27, 28, 29]})});
@@ -105,29 +107,29 @@ var level_1 = new Phaser.Class({
         this.anims.create({key: "idleSam",repeat: -1, frameRate: 1, frames: this.anims.generateFrameNumbers('NPC', {frames: [115, 116, 115, 115]})});
         this.anims.create({key: "idleAlex", repeat: -1, frameRate: 2, frames: this.anims.generateFrameNumbers('NPC', {frames: [137, 138, 139, 140]})});
         this.anims.create({key: "idleBenny",repeat: -1, frameRate: 5, frames: this.anims.generateFrameNumbers('NPC', {frames: [121, 122, 123]})});
-        this.anims.create({key: "idleBassist", repeat: -1, frameRate: 5, frames: this.anims.generateFrameNumbers('NPC', {frames: [143, 144, 145]})});
-        this.anims.create({key: "idleGuitarist", repeat: -1, frameRate: 5, frames: this.anims.generateFrameNumbers('NPC', {frames: [154, 155, 156]})});
-        this.anims.create({key: "idleDrummer", repeat: -1, frameRate: 5, frames: this.anims.generateFrameNumbers('NPC', {frames: [165, 166]})});
+        // this.anims.create({key: "idleBassist", repeat: -1, frameRate: 5, frames: this.anims.generateFrameNumbers('NPC', {frames: [143, 144, 145]})});
+        // this.anims.create({key: "idleGuitarist", repeat: -1, frameRate: 5, frames: this.anims.generateFrameNumbers('NPC', {frames: [154, 155, 156]})});
+        // this.anims.create({key: "idleDrummer", repeat: -1, frameRate: 5, frames: this.anims.generateFrameNumbers('NPC', {frames: [165, 166]})});
 
         //----------------------------------------     sleep NPC's  -------------------------------------------
-        this.anims.create({key: "sleepJon", repeat: -1, frameRate: 2, frames: this.anims.generateFrameNumbers('NPC', {frames: [9, 10]})});
-        this.anims.create({key: "sleepSally", repeat: -1, frameRate: 2, frames: this.anims.generateFrameNumbers('NPC', {frames: [20, 21]})});
-        this.anims.create({key: "sleepDillon", repeat: -1, frameRate: 2, frames: this.anims.generateFrameNumbers('NPC', {frames: [31, 32]})});
-        this.anims.create({key: "sleepChester", repeat: -1, frameRate: 2, frames: this.anims.generateFrameNumbers('NPC', {frames: [42, 43]})});
-        this.anims.create({key: "sleepElla", repeat: -1, frameRate: 1, frames: this.anims.generateFrameNumbers('NPC', {frames: [53, 54]})});
-        this.anims.create({key: "sleepBela", repeat: -1, frameRate: 1.5, frames: this.anims.generateFrameNumbers('NPC', {frames: [64, 65]})});
-        this.anims.create({key: "sleepAnna", repeat: -1,frameRate: 2,frames: this.anims.generateFrameNumbers('NPC', {frames: [75, 76]})});
-        this.anims.create({key: "sleepTyler", repeat: -1,frameRate: 2,frames: this.anims.generateFrameNumbers('NPC', {frames: [86, 87]})});
-        this.anims.create({key: "sleepNick", repeat: -1, frameRate: 1.5, frames: this.anims.generateFrameNumbers('NPC', {frames: [97, 98]})});
-        this.anims.create({key: "sleepAaron", repeat: -1, frameRate: 2, frames: this.anims.generateFrameNumbers('NPC', {frames: [108, 109]})});
-        this.anims.create({key: "sleepSam", repeat: -1, frameRate: 2, frames: this.anims.generateFrameNumbers('NPC', {frames: [119, 120]})});
-        this.anims.create({key: "sleepBenny", repeat: -1, frameRate: 1, frames: this.anims.generateFrameNumbers('NPC', {frames: [130, 131]})});
-        this.anims.create({key: "sleepAlex", repeat: -1, frameRate: 1.5, frames: this.anims.generateFrameNumbers('NPC', {frames: [141, 142]})});
-        this.anims.create({key: "sleepBassist", repeat: -1, frameRate: 2, frames: this.anims.generateFrameNumbers('NPC', {frames: [152, 153]})});
-        this.anims.create({key: "sleepGuitarist", repeat: -1, frameRate: 2, frames: this.anims.generateFrameNumbers('NPC', {frames: [163, 164]})});
-        this.anims.create({key: "sleepDrummer", repeat: -1, frameRate: 2, frames: this.anims.generateFrameNumbers('NPC', {frames: [174, 175]})});
-        this.anims.create({key: "ZZZ", repeat: -1, frameRate: 3, frames: this.anims.generateFrameNumbers('ZZZ', {frames: [0, 1]})});
-        this.anims.create({key: "discoBall", repeat: -1, frameRate: 1, frames: this.anims.generateFrameNumbers('discoBall', {frames: [0, 1]})});
+        // this.anims.create({key: "sleepJon", repeat: -1, frameRate: 2, frames: this.anims.generateFrameNumbers('NPC', {frames: [9, 10]})});
+        // this.anims.create({key: "sleepSally", repeat: -1, frameRate: 2, frames: this.anims.generateFrameNumbers('NPC', {frames: [20, 21]})});
+        // this.anims.create({key: "sleepDillon", repeat: -1, frameRate: 2, frames: this.anims.generateFrameNumbers('NPC', {frames: [31, 32]})});
+        // this.anims.create({key: "sleepChester", repeat: -1, frameRate: 2, frames: this.anims.generateFrameNumbers('NPC', {frames: [42, 43]})});
+        // this.anims.create({key: "sleepElla", repeat: -1, frameRate: 1, frames: this.anims.generateFrameNumbers('NPC', {frames: [53, 54]})});
+        // this.anims.create({key: "sleepBela", repeat: -1, frameRate: 1.5, frames: this.anims.generateFrameNumbers('NPC', {frames: [64, 65]})});
+        // this.anims.create({key: "sleepAnna", repeat: -1,frameRate: 2,frames: this.anims.generateFrameNumbers('NPC', {frames: [75, 76]})});
+        // this.anims.create({key: "sleepTyler", repeat: -1,frameRate: 2,frames: this.anims.generateFrameNumbers('NPC', {frames: [86, 87]})});
+        // this.anims.create({key: "sleepNick", repeat: -1, frameRate: 1.5, frames: this.anims.generateFrameNumbers('NPC', {frames: [97, 98]})});
+        // this.anims.create({key: "sleepAaron", repeat: -1, frameRate: 2, frames: this.anims.generateFrameNumbers('NPC', {frames: [108, 109]})});
+        // this.anims.create({key: "sleepSam", repeat: -1, frameRate: 2, frames: this.anims.generateFrameNumbers('NPC', {frames: [119, 120]})});
+        // this.anims.create({key: "sleepBenny", repeat: -1, frameRate: 1, frames: this.anims.generateFrameNumbers('NPC', {frames: [130, 131]})});
+        // this.anims.create({key: "sleepAlex", repeat: -1, frameRate: 1.5, frames: this.anims.generateFrameNumbers('NPC', {frames: [141, 142]})});
+        // this.anims.create({key: "sleepBassist", repeat: -1, frameRate: 2, frames: this.anims.generateFrameNumbers('NPC', {frames: [152, 153]})});
+        // this.anims.create({key: "sleepGuitarist", repeat: -1, frameRate: 2, frames: this.anims.generateFrameNumbers('NPC', {frames: [163, 164]})});
+        // this.anims.create({key: "sleepDrummer", repeat: -1, frameRate: 2, frames: this.anims.generateFrameNumbers('NPC', {frames: [174, 175]})});
+        // this.anims.create({key: "ZZZ", repeat: -1, frameRate: 3, frames: this.anims.generateFrameNumbers('ZZZ', {frames: [0, 1]})});
+        // this.anims.create({key: "discoBall", repeat: -1, frameRate: 1, frames: this.anims.generateFrameNumbers('discoBall', {frames: [0, 1]})});
 
         Ella.avatar = this.add.sprite(Ella.x, Ella.y, "NPC", 0);
         Ella.avatar.depth = Ella.y;
@@ -177,17 +179,17 @@ var level_1 = new Phaser.Class({
         Alex.avatar.depth = Alex.y;
         Alex["avatar"].play("idleAlex");
         //
-        bassist.avatar = this.add.sprite(bassist.x, bassist.y, "NPC", 0);
-        bassist.avatar.depth = bassist.y;
-        bassist["avatar"].play("idleBassist");
-        //
-        guitarist.avatar = this.add.sprite(guitarist.x, guitarist.y, "NPC", 0);
-        guitarist.avatar.depth = guitarist.y;
-        guitarist["avatar"].play("idleGuitarist");
-        //
-        drummer.avatar = this.add.sprite(drummer.x, drummer.y, "NPC", 0);
-        drummer.avatar.depth = drummer.y;
-        drummer["avatar"].play("idleDrummer");
+        // bassist.avatar = this.add.sprite(bassist.x, bassist.y, "NPC", 0);
+        // bassist.avatar.depth = bassist.y;
+        // bassist["avatar"].play("idleBassist");
+        // //
+        // guitarist.avatar = this.add.sprite(guitarist.x, guitarist.y, "NPC", 0);
+        // guitarist.avatar.depth = guitarist.y;
+        // guitarist["avatar"].play("idleGuitarist");
+        // //
+        // drummer.avatar = this.add.sprite(drummer.x, drummer.y, "NPC", 0);
+        // drummer.avatar.depth = drummer.y;
+        // drummer["avatar"].play("idleDrummer");
         //
         Benny.avatar = this.add.sprite(Benny.x, Benny.y, "NPC", 0);
         Benny.avatar.depth = Benny.y;
@@ -268,8 +270,13 @@ var level_1 = new Phaser.Class({
 
         this.scene.launch("hud_1");
         this.cameras.main.fadeIn(2000,255,255,255);
-    },
 
+
+
+        
+
+    },
+//////    
     update: function (time, delta) {
 
         if (!controls.joystickLocked) {

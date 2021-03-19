@@ -160,6 +160,7 @@ class NPC {
     }
 }
 
+////// npc bots
 
 function createNPCS_Level_1() {
     // with rotation
@@ -205,20 +206,35 @@ function createNPCS_Level_1() {
 
 
     Alex = new NPC("Alex", 235, 87, "You wanna buy a shirt? Sure thing.", "You already have a shirt.", null, 132);
-    Door1 = new NPC("Guy Blue", 180, 55, "It's locked", "I don't want to leave yet, we gotta do something!", null, null);
-    Door2 = new NPC("Guy Blue", 350, 105, "It's locked", "I don't want to leave yet, we gotta do something!", null, null);
-    Exit = new NPC("Guy Blue", 80, 115, " I don't want to leave yet, the concert just started.", "I don't want to leave yet, we gotta do something!", null, null);
+    Door1 = new NPC("Guy Blue", 180, 55, "It's locked.", null, null);
+    Door2 = new NPC("Guy Blue", 350, 105, "It's locked.", null, null);
+    Exit = new NPC("Guy Blue", 80, 115, "I don't want to leave just yet.", null, null);
 
 
     // without interaction
-    drummer = new NPC("Drummer", 380, 150, "", "", null, 165)
-    bassist = new NPC("Bassist", 400, 185, "slap* slap", null, null, 143)
-    guitarist = new NPC("Guitarist", 330, 140, "can't you see I'm shredding?", null, null, 154)
-    NPCS.push(Ella, Chester, Tyler, Bela, Nick, Jon, Sally, Benny, Anna, Dillon, Sam, Aaron, Alex, guitarist, bassist, drummer, Door1, Door2, Exit);
+    // drummer = new NPC("Drummer", 380, 150, "", "", null, 165)
+    // bassist = new NPC("Bassist", 400, 185, "slap* slap", null, null, 143)
+    // guitarist = new NPC("Guitarist", 330, 140, "can't you see I'm shredding?", null, null, 154)
+    NPCS.push(Ella, Chester, Tyler, Bela, Nick, Jon, Sally, Benny, Anna, Dillon, Sam, Aaron, Alex, /* guitarist, bassist, drummer, */ Door1, Door2, Exit);
 
 }
 
+//// create more players
 
+spawnPlayers = function(playerTexture, playerName, playerMessage)
+{
+    this.newPlayer = new NPC(playerTexture, 150, 50, null, null);
+    this.newPlayer.sequence = {
+           name: playerName,
+           msg1_1: playerMessage,
+        // msg2_1: "",
+        // msg1_2: "",
+        // msg2_2: "",
+        // message: 0,
+        // sequentialName: "new user"
+    }
+    NPCS.push(this.newPlayer);
+}
 
 // --------------------------------- global functions ----------------------------------
 
@@ -742,22 +758,22 @@ createMenu = (scene, names, callbacks, width, height, posX, posY) => {
 
     
         //-------------hamburger icon
-        scene.hamburguer = scene.add.image(830, 40, "hambugerIcon").setScale(0.4).setInteractive();
-        scene.hamburguer.on('pointerover', () => scene.hamburguer.setScale(0.45));
-        scene.hamburguer.on('pointerout', () => scene.hamburguer.setScale(0.4));
-        scene.hamburguer.on('pointerdown', () => {
-            if (!buttons[0].visible) { // show the icons
-                buttons.forEach(el=>{
-                    el.visible = true;
-                    el.tweenIn.play();
-                })
-                scene.time.delayedCall(200, () => texts.forEach(el=> el.setVisible(true)));
-            } else { //hide the icons
-                texts.forEach(el=> el.setVisible(false));
-                scene.time.delayedCall(200, () => buttons.forEach(el=> el.visible = false));
-                buttons.forEach(el=> el.tweenOut.play());
-            }
-        });
+        // scene.hamburguer = scene.add.image(830, 40, "hambugerIcon").setScale(0.4).setInteractive();
+        // scene.hamburguer.on('pointerover', () => scene.hamburguer.setScale(0.45));
+        // scene.hamburguer.on('pointerout', () => scene.hamburguer.setScale(0.4));
+        // scene.hamburguer.on('pointerdown', () => {
+        //     if (!buttons[0].visible) { // show the icons
+        //         buttons.forEach(el=>{
+        //             el.visible = true;
+        //             el.tweenIn.play();
+        //         })
+        //         scene.time.delayedCall(200, () => texts.forEach(el=> el.setVisible(true)));
+        //     } else { //hide the icons
+        //         texts.forEach(el=> el.setVisible(false));
+        //         scene.time.delayedCall(200, () => buttons.forEach(el=> el.visible = false));
+        //         buttons.forEach(el=> el.tweenOut.play());
+        //     }
+        // });
 
 
 
