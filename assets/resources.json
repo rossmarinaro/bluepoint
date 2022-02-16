@@ -1,0 +1,36 @@
+
+{  
+    "image":
+    [
+        { "audio_icon": "src/assets/images/level_1/unmute-icon-12.png" },
+        { "black": "src/assets/images/level_1/black.png" },
+        { "background_1": "src/assets/images/level_1/base1.png" },
+        { "drums": "src/assets/images/level_1/drums.png" },
+        { "table": "src/assets/images/level_1/table.png" },
+        { "speakers": "src/assets/images/level_1/speakers.png" },
+        { "messageBoard": "src/assets/images/level_1/dialogue window rectangle.png" },
+        { "startButton": "src/assets/images/level_1/start_button.png" },
+        { "interactButton": "src/assets/images/level_1/interact_button.png" },
+        { "facebook": "src/assets/images/facebook.png" },
+        { "twitter": "src/assets/images/twitter.png" },
+        { "shareIcon": "src/assets/images/pngwave.png" },
+        { "copyIcon": "src/assets/images/copy.png" },
+        { "hamburgerIcon": "src/assets/images/Hamburger_icon.png" },
+        { "npcGlow": "src/assets/images/npc_glow.png" },
+        { "doorGlow": "src/assets/images/door_glow.png" }
+    ],
+    "spritesheet":
+    [
+        { "discoBall": [ "src/assets/images/level_1/disco ball.png", { "frameWidth": 36, "frameHeight": 36 } ] },
+        { "blueGuy": [ "src/assets/images/level_1/guy blue sprites.png", { "frameWidth": 36, "frameHeight": 36 } ] },
+        { "redGuy": [ "src/assets/images/level_1/red guy blue sprites.png", { "frameWidth": 36, "frameHeight": 36 } ] },
+        { "NPC1": [ "src/assets/images/level_1/NPC sprites.png", { "frameWidth": 36, "frameHeight": 36 } ]  },
+        { "NPC2": [ "src/assets/images/level_1/NPC sprites2.png", { "frameWidth": 32, "frameHeight": 32 } ]  },
+        { "adam_sprites": [ "src/assets/images/level_1/adam sprites.png", { "frameWidth": 32, "frameHeight": 32 } ]  }
+    ],
+    "audio": 
+    [
+        { "no_vision": "src/assets/audio/No Vision.mp3" }
+    ]
+
+}
